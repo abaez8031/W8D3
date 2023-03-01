@@ -127,7 +127,17 @@ Board.prototype._positionsToFlip = function (pos, color, dir, piecesToFlip) {
  * taking the position will result in some pieces of the opposite
  * color being flipped.
  */
-Board.prototype.validMove = function (pos, color) {};
+Board.prototype.validMove = function (pos, color) {
+  let positionsToFlip = []
+  for (let i=0; i < Board.DIRS.length; i++){
+    positionsToFlip = positionsToFlip.concat(this._positionsToFlip(pos, color, Board.DIRS[i]));
+  }
+  if (!this.isOccupied(pos) && positionsToFlip.length > 0){
+    return true;
+  }else{
+    return false;
+  }
+};
 
 /**
  * Adds a new piece of the given color to the given position, flipping the
