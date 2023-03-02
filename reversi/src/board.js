@@ -213,13 +213,14 @@ Board.prototype.isOver = function () {
  */
 Board.prototype.print = function () {
   for (let i = 0; i < 8; i++) {
+    let line = ""
     for (let j = 0; j < 8; j++) {
       if (!this.grid[i][j]) {
-        console.log(" ");
+        line += "-";
       }else{
-        console.log(grid[i][j].toString());
+        line += this.grid[i][j].toString();
       }
-    }console.log("\n");
+    }console.log(line);
   }
 };
 
